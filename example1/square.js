@@ -4,6 +4,6 @@ module.exports = class square {
     }
 
     area() {
-        return this.width * 2;
+        return this.width ** 2;
     }
 };

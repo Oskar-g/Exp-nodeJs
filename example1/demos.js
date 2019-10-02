@@ -8,7 +8,7 @@ let radio = 1234;
 console.log(`Area del circulo con radio ${radio}: ${area(radio)}`);
 console.log(`Circunferencia del circulo con radio ${radio}: ${circunference(radio)}`);
 
-let c = new Square(100);
+let c = new Square(10);
 const ev = (area) => console.log('Evento emitido', area);
 
 myEmmiter.on('event', ev)
