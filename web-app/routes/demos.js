@@ -9,27 +9,6 @@ router.get('/', (req, res) => {
         .end('<html><body><h1>ASDLKASLDKJSAD</h1></body></html>');
 });
 
-router.get('/form', (req, res) => {
-    const rslt = {
-        "title": 'titulo po vale',
-        "nombre": 'paco',
-        "apellidos": 'Matute'
-    }
-
-    res.render('persona-form', rslt);
-});
-/*
-router.post('/form', (req, res) => {
-    const { id, nombre, apellido } = req.body;
-    const rslt = {
-        "id": id,
-        "nombre": nombre,
-        "apellido": apellido
-    }
-    res.status(200)
-        .json(rslt);
-});
-*/
 router.get('/json', (req, res) => {
     const { id, nombre, apellido } = req.body;
     const rslt = {

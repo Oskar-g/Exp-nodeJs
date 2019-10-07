@@ -1,0 +1,28 @@
+extends layout
+
+block content
+  h1=title
+  if errors.length 
+    #errors
+      p=errors.length
+      h2 Errores encontrados
+      ul
+        each item in errors
+          li=item
+  
+
+  form(action='/personas/add' method='post')
+    label(for='id') ID:
+    input#nombre(type='text', readonly='readonly' name='id' value=persona.id)
+    br
+    label(for='apellidos') Nombre: 
+    input#nombre(type='text', name='nombre' value=persona.nombre)
+    br
+    label(for='apellidos') Apellidos: 
+    input#apellidos(type='text', name='apellidos' value=persona.apellidos)
+    br
+    label(for='edad') Edad: 
+    input#edad(type='text', name='edad' value=persona.edad)
+    br
+    input(type="submit", value="Enviar")
+  

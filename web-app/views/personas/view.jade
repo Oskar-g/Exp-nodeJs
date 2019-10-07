@@ -1,0 +1,26 @@
+extends layout
+
+block content
+  h1= title
+  
+  a.btn.positive(href='/personas/add') Añadir más
+  table
+    tr
+      th id
+      th nombre
+      th apellidos
+      th edad
+      th operaciones
+    each item in personas
+      tr
+        td=item.id
+        td=item.nombre
+        td=item.apellidos
+        td=item.edad
+        td
+          a.btn(href='/personas/'+item.id) visualizar  
+          a.btn(href='/personas/'+item.id+'/edit') editar  
+          a.btn(href='/personas/'+item.id+'/delete') eliminar
+
+
+

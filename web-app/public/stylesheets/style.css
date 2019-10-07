@@ -1,8 +1,43 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    padding: 50px;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 a {
-  color: #00B7FF;
+    color: #00B7FF;
+}
+
+table {
+    border: solid 1px black;
+    margin: 10px;
+}
+
+#errors {
+    background: rgba(226, 7, 7, 0.904)
+}
+
+td,
+th {
+    border-right: solid 1px black;
+    padding: 10px;
+}
+
+th {
+    background: rgba(0, 138, 192, 0.616)
+}
+
+a.btn {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    background: rgba(5, 91, 148, 0.712);
+    padding: 3px 5px;
+    border-radius: 3px;
+    margin: 0px 5px;
+    box-shadow: 3px 5px rgba(0, 0, 0, 0.616);
+}
+
+a.btn.positive {
+    background: rgba(5, 148, 48, 0.712);
+    margin: 10px;
 }

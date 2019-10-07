@@ -1,0 +1,19 @@
+extends layout
+
+block content
+  h1= title
+  #content
+    p#id 
+      b ID:
+      span=persona.id
+    p#nombre 
+      b Nombre:
+      span=persona.nombre
+    p#apellido 
+      b Apellidos:
+      span=persona.apellidos
+    p#edad 
+      b Edad:
+      span=persona.edad
+    a.btn(href='/personas') Volver
+    
