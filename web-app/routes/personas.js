@@ -76,32 +76,29 @@ router.post('/add', (req, res) => {
     });
 });
 
-router.get('/:id/edit', (req, res) => {
+router.get('/:id/edit', async(req, res) => {
     const { id } = req.params;
 
-    const data = fs.promises.readFile('./data/personas.json', 'utf8');
-    data.then(response => {
-        const listado = JSON.parse(response);
+    const data = await fs.promises.readFile('./data/personas.json', 'utf8');
+    const listado = JSON.parse(data);
 
-        const index = listado.findIndex(item => item.id == id);
-        if (index) {
-            res.status(404).end();
-            return;
-        }
+    const index = listado.findIndex(item => item.id == id);
+    if (index) {
+        res.status(404).end();
+        return;
+    }
 
-        const persona = listado[index];
-        const model = {
-            "title": 'Añadir nueva personas',
-            "errors": [],
-            "persona": persona
+    const persona = listado[index];
+    const model = {
+        "title": 'Añadir nueva personas',
+        "errors": [],
+        "persona": persona
 
-        }
-        res.render('personas/edit', model);
-    });
-
+    }
+    res.render('personas/edit', model);
 });
 
-router.post('/:id/edit', (req, res) => {
+router.post('/:id/edit', async(req, res) => {
     const { id } = req.params;
     console.log('AQui mas')
     const { nombre, apellidos, edad } = req.body;
@@ -122,32 +119,28 @@ router.post('/:id/edit', (req, res) => {
     }
 
     const data = fs.promises.readFile('./data/personas.json', 'utf8');
-    data.then(response => {
+    const listado = JSON.stringify(data);
+    const index = listado.findIndex(item => item.id == id);
+    if (index) {
+        res.status(404).end();
+        return;
+    }
 
-        const listado = JSON.stringify(response);
-        const index = listado.findIndex(item => item.id == id);
-        if (index) {
-            res.status(404).end();
-            return;
-        }
+    listado[index] = {
+        'id': id,
+        'nombre': nombre,
+        'apellidos': apellidos,
+        'edad': edad
+    }
 
-        listado[index] = {
-            'id': id,
-            'nombre': nombre,
-            'apellidos': apellidos,
-            'edad': edad
-        }
+    await fs.promises.writeFile('./data/personas.json', JSON.stringify(listado), 'utf8');
 
-        fs.promises.writeFile('./data/personas.json', JSON.stringify(listado), 'utf8');
+    const model = {
+        "title": `datos de ${persona.nombre}`,
+        'persona': persona
+    }
 
-        const model = {
-            "title": `datos de ${persona.nombre}`,
-            'persona': persona
-        }
-
-        res.render('personas/profile', model);
-    });
-
+    res.render('personas/profile', model);
 });
 
 router.get('/:id', (req, res) => {
