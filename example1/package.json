@@ -10,6 +10,6 @@
   "license": "MIT",
   "dependencies": {
     "express": "^4.17.1",
-    "karma": "^4.3.0"
+    "karma": "^6.3.14"
   }
 }
